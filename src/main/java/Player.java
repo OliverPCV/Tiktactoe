@@ -1,4 +1,11 @@
 public class Player {
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", symbol=" + symbol +
+                '}';
+    }
 
     String name;
     char symbol;
@@ -7,4 +14,5 @@ public class Player {
         this.symbol = symbol;
         this.name = name;
     }
+    //ckj
 }
