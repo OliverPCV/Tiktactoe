@@ -9,7 +9,7 @@ public class Game {
     public static void main(String args[]) {
 
         char boardArr[][] = new char[10][10];
-        int choose = 0;
+        int startMenu = 0;
 
         ArrayList<Player> players = new ArrayList<>();
 
@@ -19,9 +19,9 @@ public class Game {
             System.out.println("1. Pridej hrace");
             System.out.println("2. Zacni hru");
 
-            choose = sc.nextInt();
+            startMenu = sc.nextInt();
 
-            if(choose == 1){
+            if(startMenu == 1){
                 System.out.println("Zadej jmeno hrace");
                 sc.nextLine();
                 String name = sc.nextLine();
@@ -36,7 +36,7 @@ public class Game {
                     System.out.println(players.get(playersInArraylist).toString());
                 }
 
-            } else if (choose == 2){
+            } else if (startMenu == 2){
                 for (int row = 0; row < boardArr.length; row++) {
                     for (int col = 0; col < boardArr[row].length; col++) {
                         boardArr[row][col] = '-';
@@ -45,23 +45,33 @@ public class Game {
                     System.out.println();
                 }
 
-                System.out.println("Zadej radek");
-                int rowPos = sc.nextInt() - 1;
+                /**
+                 * TODO
+                 * Interakce s jednotlivýma uživatelama
+                 */
 
-                System.out.println("Zadej sloupec");
-                int colPos = sc.nextInt() - 1;
+                for (int playersTurn = 0; playersTurn < players.size(); playersTurn++) {
+                    System.out.println("Hraje hrac " + players.get(playersTurn).name);
 
-                boardArr[rowPos][colPos] = 'X';
+                    System.out.println("Zadej radek");
+                    int rowPos = sc.nextInt() - 1;
 
-                for (int i = 0; i < boardArr.length; i++){
-                    for (int j = 0; j < boardArr.length; j++){
-                        System.out.print(boardArr[i][j] + "\t");
+                    System.out.println("Zadej sloupec");
+                    int colPos = sc.nextInt() - 1;
+
+                    boardArr[rowPos][colPos] = players.get(playersTurn).symbol;
+
+                    for (int i = 0; i < boardArr.length; i++) {
+                        for (int j = 0; j < boardArr.length; j++) {
+                            System.out.print(boardArr[i][j] + "\t");
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
-                }
 
+                }
             }
-        } while(choose != 2);
+        }
+        while(startMenu != 2);
 
     }
 
